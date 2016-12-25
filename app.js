@@ -10,7 +10,7 @@ var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 var mongo = require('mongodb');
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/bookAPI');
+mongoose.connect('mongodb://localhost/userslogin');
 var db = mongoose.connection;
 
 // Routes
@@ -23,7 +23,7 @@ var app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.engine('handlebars',exphbs({defaultLayout:'layout'}));
-app.set('view engine', 'jade');
+app.set('view engine', 'handlebars');
 
 // BodyParser Middleware
 app.use(bodyParser.json());
@@ -40,4 +40,48 @@ app.use(session({
 	resave : true
 }));
 
-// Express Validator 8:50
+// Passport init
+app.use(passport.initialize());
+app.use(passport.session());
+
+// Express Validator
+app.use(expressValidator({
+	errorFormatter: function(param, msg, value){
+		var namespace = param.split('.');
+		var root = namespace.shift();
+		var formParam = root;
+
+		while(namespace.length){
+			formParam += '[' + namespace.shift() + ']';
+		}
+
+		return {
+			param : formParam,
+			msg   : msg,
+			value : value
+		}
+	}
+}));
+
+// Connect Flash
+app.use(flash());
+
+// Global Vars
+app.use(function(req, res, next){
+	res.locals.success_msg = req.flash('success_msg');
+	res.locals.error_msg = req.flash('error_msg');
+	res.locals.error = req.flash('error');
+	next();
+});
+
+app.use('/', routes);
+app.use('/users', users);
+
+// Set Port
+app.set('port', (process.env.PORT || 3000));
+
+app.listen(app.get('port'),function(){
+	console.log('Server started on port '+app.get('port'));
+});
+
+// upto 11:20
