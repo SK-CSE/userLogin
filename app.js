@@ -13,7 +13,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/userslogin');
 var db = mongoose.connection;
 
-// Routes
+// Routes files
 var routes = require('./routes/index');
 var users = require('./routes/users');
 
@@ -74,6 +74,7 @@ app.use(function(req, res, next){
 	next();
 });
 
+// Routes Middleware
 app.use('/', routes);
 app.use('/users', users);
 
