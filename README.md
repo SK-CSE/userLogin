@@ -1,12 +1,12 @@
 # userLogin
 A simple login app in Node JS with Passport JS
 
-## Instruction to run
+## To install node modules
 
 ```bash
 $ npm install 
 ```
-	then
+## To run Application
 
 ```bash
 $ gulp 
