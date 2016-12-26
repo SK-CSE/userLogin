@@ -6,7 +6,7 @@ A simple login app in Node JS with Passport JS
 ```bash
 $ npm install 
 ```
-then
+	then
 
 ```bash
 $ gulp 
