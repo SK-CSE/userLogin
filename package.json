@@ -22,6 +22,8 @@
     "mongoose": "*",
     "passport": "*",
     "passport-http": "*",
-    "passport-local": "*"
+    "passport-local": "*",
+    "gulp": "*",
+    "gulp-nodemon": "*"
   }
 }
