@@ -1,5 +1,5 @@
 # userLogin
-A simple login app in Node JS with Passport JS
+A simple login app in Node JS with Passport JS (Under Development)
 
 ## To install node modules
 
