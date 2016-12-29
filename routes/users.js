@@ -35,7 +35,7 @@ router.post('/register', function(req, res) {
 	  	errors : errors
 	  });
 	}else{
-	  console.log("passed");
+		
 	  var newUser = new User({
 	  	name : name,
 	  	email : email,
