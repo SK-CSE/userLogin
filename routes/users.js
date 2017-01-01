@@ -1,6 +1,6 @@
-var express = require('express');
-var router = express.Router();
-var passport = require('passport');
+var express 	  = require('express');
+var router 		  = express.Router();
+var passport 	  = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
 
 var User = require('../models/user');
@@ -17,10 +17,10 @@ router.get('/login', function(req, res) {
 
 // Register User
 router.post('/register', function(req, res) {
-	var name = req.body.name;
-	var email = req.body.email;
-	var username = req.body.username;
-	var password = req.body.password;
+	var name 	  = req.body.name;
+	var email 	  = req.body.email;
+	var username  = req.body.username;
+	var password  = req.body.password;
 	var password2 = req.body.password2;
 
 	// Validation
@@ -40,8 +40,8 @@ router.post('/register', function(req, res) {
 	}else{
 		
 	  var newUser = new User({
-	  	name : name,
-	  	email : email,
+	  	name 	 : name,
+	  	email 	 : email,
 	  	username : username,
 	  	password : password
 	  });
@@ -97,5 +97,5 @@ router.get('/logout', function(req, res){
 	req.flash('success_msg', 'you are logout');
 	res.redirect('/users/login');
 });
-// 13:33
+
 module.exports = router;

@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
-var	Schema = mongoose.Schema;
-var bcrypt = require('bcryptjs');
+var	Schema 	 = mongoose.Schema;
+var bcrypt   = require('bcryptjs');
 
 
 var UserSchema = new Schema({
@@ -45,13 +45,10 @@ module.exports.getUserById = function(id,callback){
 	User.findById(id,callback);
 };
 
-
 module.exports.comparePassword = function(passwordTyped, hash, callback){
 	// Load hash from your password DB. 
 	bcrypt.compare(passwordTyped, hash, function(err, isMatch) {
 		if(err) throw err;
 		callback(null,isMatch);
 	});
-
-
 }	

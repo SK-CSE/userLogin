@@ -1,21 +1,21 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var exphbs = require('express-handlebars');
+var express 		 = require('express');
+var path 			 = require('path');
+var cookieParser     = require('cookie-parser');
+var bodyParser 		 = require('body-parser');
+var exphbs 			 = require('express-handlebars');
 var expressValidator = require('express-validator');
-var flash = require('connect-flash');
-var session = require('express-session');
-var passport = require('passport');
-var LocalStrategy = require('passport-local').Strategy;
-var mongo = require('mongodb');
-var mongoose = require('mongoose');
+var flash 			 = require('connect-flash');
+var session          = require('express-session');
+var passport 		 = require('passport');
+var LocalStrategy    = require('passport-local').Strategy;
+var mongo 			 = require('mongodb');
+var mongoose 		 = require('mongoose');
 mongoose.connect('mongodb://localhost/userslogin');
-var db = mongoose.connection;
+var db 				 = mongoose.connection;
 
 // Routes files
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var users  = require('./routes/users');
 
 // Init App
 var app = express();
@@ -48,7 +48,7 @@ app.use(passport.session());
 app.use(expressValidator({
 	errorFormatter: function(param, msg, value){
 		var namespace = param.split('.');
-		var root = namespace.shift();
+		var root 	  = namespace.shift();
 		var formParam = root;
 
 		while(namespace.length){
@@ -69,9 +69,9 @@ app.use(flash());
 // Global Vars
 app.use(function(req, res, next){
 	res.locals.success_msg = req.flash('success_msg');
-	res.locals.error_msg = req.flash('error_msg');
-	res.locals.error = req.flash('error'); //passport error
-	res.locals.user = req.user || null;
+	res.locals.error_msg   = req.flash('error_msg');
+	res.locals.error 	   = req.flash('error'); //passport error
+	res.locals.user 	   = req.user || null;
 	next();
 });
 
