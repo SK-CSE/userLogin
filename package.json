@@ -25,5 +25,8 @@
     "passport-local": "*",
     "gulp": "*",
     "gulp-nodemon": "*"
+  },
+  "engines": {
+    "node": "10.4.0"
   }
 }
