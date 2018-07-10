@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "A simple login authentication with node.js and passport.js",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+   "scripts": {
+    "start": "node app.js"
   },
   "author": "Saurabh Kumar",
   "license": "ISC",
@@ -25,5 +25,8 @@
     "passport-local": "*",
     "gulp": "*",
     "gulp-nodemon": "*"
+  },
+  "engines": {
+    "node": "10.4.0"
   }
 }
